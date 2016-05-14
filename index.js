@@ -8,17 +8,14 @@ module.exports = function (value) {
     return 'nan'
 
   var type = str.call(value).slice(8, -1)
-  if (type == 'Arguments' || argish(value))
+  if (type == 'Arguments' || _typeof == 'object' &&
+    typeof value.callee == 'function') {
     return 'arguments'
+  }
 
   type = value.constructor ?
     value.constructor.name || type :
     type
 
   return type ? type.toLowerCase() : _typeof
-}
-
-function argish (value) {
-  return typeof value == 'object' &&
-    typeof value.callee == 'function'
 }
