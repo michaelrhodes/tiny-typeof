@@ -6,9 +6,9 @@ a small and robust `typeof` implementation
 
 | compression           |  size |
 | :-------------------- | ----: |
-| tiny-typeof.js        | 973 B |
-| tiny-typeof.min.js    | 754 B |
-| tiny-typeof.min.js.gz | 423 B |
+| tiny-typeof.js        | 998 B |
+| tiny-typeof.min.js    | 788 B |
+| tiny-typeof.min.js.gz | 448 B |
 
 
 ## Install
@@ -60,6 +60,14 @@ t(arguments)
 
 t(new CustomType)
 > 'customtype'
+
+if (process.browser) {
+  t(document.createElement('div'))
+  > 'div'
+
+  t(document.querySelectorAll('*'))
+  > 'nodelist'
+}
 ```
 
 ### License

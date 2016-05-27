@@ -14,5 +14,12 @@ test('it works', function (assert) {
   assert.equal(t(new Date), 'date')
   assert.equal(t(/asdf/), 'regexp')
   assert.equal(t(arguments), 'arguments')
+
+  if (process.browser) {
+    assert.equal(t(document.createElement('div')), 'div')
+    assert.equal(t(document.querySelector('*')), 'html')
+    assert.equal(t(document.querySelectorAll('*')), 'nodelist')
+  }
+
   assert.end()
 })
